@@ -1,0 +1,17 @@
+{
+  "name": "judokan-11ty",
+  "version": "1.0.0",
+  "description": "Brandon Judokan, 11ty-ified",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "static",
+    "site",
+    "eleventy",
+    "judo"
+  ],
+  "author": "Patrick Johanneson",
+  "license": "GPL-3.0-or-later"
+}
