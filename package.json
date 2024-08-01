@@ -13,5 +13,8 @@
     "judo"
   ],
   "author": "Patrick Johanneson",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
 }
