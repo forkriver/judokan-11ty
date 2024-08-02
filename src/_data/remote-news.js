@@ -30,10 +30,15 @@ module.exports = async function() {
 	try {
 		let baseUrl = 'https://judomanitoba.mb.ca/wp-json/wp/v2/posts/';
 		// EleventyFetch doesn't fetch headers, so Axios, I guess.
-		let { headers, data } = await axios.get( baseUrl );
+		let headers = await axios.head( baseUrl );
 		let pages = 0;
-		if ( headers['x-wp-totalpages'] ) {
-			totalPages = parseInt( headers['x-wp-totalpages'] );
+		let totalPages = 0;
+		let totalPosts = 0;
+		if ( headers.headers['x-wp-totalpages'] ) {
+			totalPages = parseInt( headers.headers['x-wp-totalpages'] );
+		}
+		if ( headers.headers['x-wp-total'] ) {
+			totalPosts = parseInt( headers.headers['x-wp-total'] );
 		}
 		let posts = [];
 		let response;
@@ -43,6 +48,11 @@ module.exports = async function() {
 			posts = posts.concat( await getPosts( i ) );
 		}
 		console.log( `Found ${posts.length} posts in total.`)
+		if ( posts.length === totalPosts ) {
+			console.log( '	...which seems about right.' );
+		} else {
+			console.log( `	...which seems a bit off, frankly; we expected ${totalPosts}.` );
+		}
 		return posts;
 	} catch ( e ) {
 		console.log( e );
