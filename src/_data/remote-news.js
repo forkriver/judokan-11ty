@@ -3,6 +3,7 @@ const axios         = require( 'axios' );
 
 const ITEMS_PER_REQUEST = 10;
 const API_BASE_URL      = 'https://judomanitoba.mb.ca/wp-json/wp/v2/posts/';
+const REMOTE_BASE_URL   = 'https://judomanitoba.mb.ca/';
 
 /**
  * Gets a set of posts from the remote server.
@@ -52,6 +53,10 @@ module.exports = async function() {
 			console.log( '	...which seems about right.' );
 		} else {
 			console.log( `	...which seems a bit off, frankly; we expected ${totalPosts}.` );
+		}
+		// Rewrite the post permalink to a local one.
+		for ( post of posts ) {
+			post.localLink = post.link.replace( /https:\/\/judomanitoba\.mb\.ca\//, '/' );
 		}
 		return posts;
 	} catch ( e ) {
