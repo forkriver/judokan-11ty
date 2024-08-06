@@ -1,0 +1,14 @@
+---
+pagination:
+  data: remote-events
+  size: 1
+  alias: event
+permalink: "/event/{{ event.localLink }}"
+layout: base.njk
+---
+
+<h1>{{ event.title }}</h1>
+
+{{ event.start_date }} – {{ event.end_date }}
+
+{{ event.description | safe }}

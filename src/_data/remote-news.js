@@ -1,5 +1,5 @@
-const EleventyFetch = require( '@11ty/eleventy-fetch' );
-const axios         = require( 'axios' );
+const EleventyFetch   = require( '@11ty/eleventy-fetch' );
+const { getWPHeader } = require( '../../lib/forkriver/getWPData.js' );
 
 const ITEMS_PER_REQUEST = 10;
 const API_BASE_URL      = 'https://judomanitoba.mb.ca/wp-json/wp/v2/posts/';
@@ -29,17 +29,17 @@ async function getPosts( page = 1 ) {
 
 module.exports = async function() {
 	try {
-		let baseUrl = 'https://judomanitoba.mb.ca/wp-json/wp/v2/posts/';
 		// EleventyFetch doesn't fetch headers, so Axios, I guess.
-		let headers = await axios.head( baseUrl );
+		let headers = await getWPHeader( API_BASE_URL, 'x-wp-total' );
+		console.log( headers );
 		let pages = 0;
 		let totalPages = 0;
 		let totalPosts = 0;
-		if ( headers.headers['x-wp-totalpages'] ) {
-			totalPages = parseInt( headers.headers['x-wp-totalpages'] );
+		if ( headers['count'] ) {
+			totalPages = parseInt( headers['pages'] );
 		}
-		if ( headers.headers['x-wp-total'] ) {
-			totalPosts = parseInt( headers.headers['x-wp-total'] );
+		if ( headers['pages'] ) {
+			totalPosts = parseInt( headers['count'] );
 		}
 		let posts = [];
 		let response;
