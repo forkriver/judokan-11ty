@@ -56,7 +56,8 @@ module.exports = async function() {
 		}
 		// Rewrite the post permalink to a local one.
 		for ( post of posts ) {
-			post.localLink = post.link.replace( /https:\/\/judomanitoba\.mb\.ca\//, '/' );
+			post.remoteURL = post.link;
+			post.url = post.link.replace( /https:\/\/judomanitoba\.mb\.ca\//, '/' );
 		}
 		return posts;
 	} catch ( e ) {

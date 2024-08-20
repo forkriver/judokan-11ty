@@ -1,14 +1,14 @@
 ---
 pagination:
-  data: remote-news
+  data: remoteNews
   size: 1
   alias: article
-permalink: "{{ article.localLink }}"
+permalink: "{{ article.url }}"
 layout: base.njk
 ---
 
 <h1>{{ article.title.rendered }}</h1>
 
-{{ article.date }}
+{{ article.date | articleDateFormat }}
 
 {{ article.content.rendered | safe }}
