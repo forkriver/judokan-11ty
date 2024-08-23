@@ -7,8 +7,8 @@ permalink: "{{ article.url }}"
 layout: base.njk
 ---
 
-<h1>{{ article.title.rendered }}</h1>
+<h1>{{ article.title }}</h1>
 
 {{ article.date | articleDateFormat }}
 
-{{ article.content.rendered | safe }}
+{{ article.content | safe }}

@@ -4,15 +4,11 @@ layout: base.njk
 permalink: "/news/index.html"
 ---
 
-<!-- @todo Get the remote news and local news merged properly -->
+{% if collections.allNews %}
 
-{% if remoteNews %}
+{% for article in collections.allNews %}
 
-## Judo Manitoba
-
-{% for article in remoteNews %}
-
-<a href="{{ article.url }}">{{ article.title.rendered }}</a>—{{ article.date | articleDateFormat }}
+<a href="{{ article.data.url }}">{{ article.title }}</a>—{{ article.date | articleDateFormat }}
 {%- if article.remoteURL -%} <a href="{{article.remoteURL}}">(original link)</a> {%- endif -%}
 
 {% endfor %}

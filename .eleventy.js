@@ -20,11 +20,12 @@ module.exports = eleventyConfig => {
 
 	// Merged local and remote news.
 	// @link https://www.roboleary.net/2024/05/26/eleventy-external-posts.html
-	eleventyConfig.addCollection( 'news', (collection) => {
-		let localNews = collection.getFilteredByGlob( 'src/news/**/*.md' );
-		let remoteNews = collection.getAll()[0].data.remoteNews;
-		let news = [ ...remoteNews, ...localNews ];
-		return [];
+	eleventyConfig.addCollection( 'allNews', (collection) => {
+		let localNews   = collection.getFilteredByGlob( 'src/news/**/*.md' );
+		let remoteNews  = collection.getAll()[0].data.remoteNews;
+		let allNews     = [ ...localNews, ...remoteNews ];
+		// Not sure what to do here, but it's late and I'm tired.
+		return allNews;
 
 	});
 

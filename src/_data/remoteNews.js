@@ -59,7 +59,26 @@ module.exports = async function() {
 			post.remoteURL = post.link;
 			post.url = post.link.replace( /https:\/\/judomanitoba\.mb\.ca\//, '/' );
 		}
-		return posts;
+		// Rewrite the WordPress posts to resemble an Eleventy data structure.
+		let eleventyPosts = [];
+		for ( post of posts ) {
+			let p = {};
+			p.url = post.url;
+			p.date = post.date_gmt,
+
+			p.data = {
+				date: post.date_gmt,
+				title: post.title.rendered,
+				tags: [],
+				remoteURL: post.remoteURL,
+			};
+			p.content = post.content.rendered;
+			// Dump it all in there.
+			p.data.wordpress = post;
+			eleventyPosts.push( p );
+		}
+		console.log( eleventyPosts[0] );
+		return eleventyPosts;
 	} catch ( e ) {
 		console.log( e );
 		return [];

@@ -37,7 +37,7 @@ module.exports = async function() {
 	try {
 		// EleventyFetch doesn't fetch headers, so Axios, I guess.
 		let headers = await getWPHeader( API_BASE_URL, 'x-tec-total' );
-		console.log( headers );
+		// console.log( headers );
 		let pages = 0;
 		let totalPages = 0;
 		let totalPosts = 0;
@@ -51,7 +51,7 @@ module.exports = async function() {
 		let response;
 		let url;
 		for ( i = 1; i <= totalPages; i++ ) {
-			console.log( `Getting page ${i} of ${totalPages}...`)
+			console.log( `Events: Getting page ${i} of ${totalPages}...`)
 			posts = posts.concat( await getPosts( i ) );
 		}
 		console.log( `Found ${posts.length} events in total.`)
@@ -64,7 +64,7 @@ module.exports = async function() {
 		for ( post of posts ) {
 			post.localLink = post.url.replace( /https:\/\/judomanitoba\.mb\.ca\//, '/' );
 		}
-		console.log( posts );
+		// console.log( posts );
 		return posts;
 	} catch ( e ) {
 		console.log( e );
