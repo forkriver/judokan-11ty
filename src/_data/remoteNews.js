@@ -78,7 +78,6 @@ module.exports = async function() {
 			p.data.wordpress = post;
 			eleventyPosts.push( p );
 		}
-		console.log( eleventyPosts[0] );
 		return eleventyPosts;
 	} catch ( e ) {
 		console.log( e );

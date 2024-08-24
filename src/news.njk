@@ -4,10 +4,8 @@ pagination:
   size: 1
   alias: article
 permalink: "{{ article.url }}"
-layout: base.njk
+layout: article.njk
 ---
-
-{{ article.title | log }}
 
 <h1>{{ article.title }}</h1>
 
