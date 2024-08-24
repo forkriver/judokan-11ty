@@ -5,10 +5,9 @@ pagination:
   alias: article
 permalink: "{{ article.url }}"
 layout: article.njk
+eleventyComputed:
+  date: "{{ article.date }}"
+  title: "{{ article.title }}"
 ---
-
-<h1>{{ article.title }}</h1>
-
-{{ article.date | articleDateFormat }}
 
 {{ article.content | safe }}
