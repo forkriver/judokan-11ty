@@ -9,7 +9,7 @@ permalink: "/news/index.html"
 {% for article in collections.allNews %}
 
 <a href="{{ article.url }}">{{ article.data.title }}</a>—{{ article.date | articleDateFormat }}
-{%- if article.data.remoteURL -%} <a href="{{article.data.remoteURL}}">(original link)</a> {%- endif -%}
+{%- if article.data.remoteURL %} <a href="{{article.data.remoteURL}}">(original link)</a> {%- endif -%}
 
 {% endfor %}
 
