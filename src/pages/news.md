@@ -8,8 +8,8 @@ permalink: "/news/index.html"
 
 {% for article in collections.allNews %}
 
-<a href="{{ article.data.url }}">{{ article.title }}</a>—{{ article.date | articleDateFormat }}
-{%- if article.remoteURL -%} <a href="{{article.remoteURL}}">(original link)</a> {%- endif -%}
+<a href="{{ article.url }}">{{ article.data.title }}</a>—{{ article.date | articleDateFormat }}
+{%- if article.data.remoteURL -%} <a href="{{article.data.remoteURL}}">(original link)</a> {%- endif -%}
 
 {% endfor %}
 

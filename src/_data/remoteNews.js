@@ -62,14 +62,15 @@ module.exports = async function() {
 		// Rewrite the WordPress posts to resemble an Eleventy data structure.
 		let eleventyPosts = [];
 		for ( post of posts ) {
-			let p = {};
-			p.url = post.url;
-			p.date = post.date_gmt,
+			let p   = {};
+			p.url   = post.url;
+			p.date  = post.date_gmt;
+			p.title = post.title.rendered;
 
 			p.data = {
-				date: post.date_gmt,
+				date:  post.date_gmt,
 				title: post.title.rendered,
-				tags: [],
+				tags:  [],
 				remoteURL: post.remoteURL,
 			};
 			p.content = post.content.rendered;
