@@ -1,0 +1,26 @@
+---
+pagination:
+  data: remoteEvents
+  size: 1
+  alias: event
+permalink: "{{ event.localLink }}"
+layout: event.njk
+eleventyComputed:
+  date: "{{ event.date }}"
+  title: "{{ event.title }}"
+  content: "{{ event.description }}"
+  venue: "{{ event.venue }}"
+  organizer: "{{ event.organizer }}"
+  originalLink: "{{ event.url }}"
+  remoteID: "{{ event.id }}"
+---
+
+<p class="date event-date" id="event-date-{{ remoteID }}">{{ event.start_date | articleDateFormat }} – {{ event.end_date | articleDateFormat }}</p>
+
+{# Tribe Events calls it "description", not "content", because why not #}
+{{ event.description | safe }}
+
+<p class="event-meta" id="event-meta-{{ remoteID }}">
+{{ event.organizer[0].organizer }}<br />
+{{ event.venue.venue }}<br />
+</p>

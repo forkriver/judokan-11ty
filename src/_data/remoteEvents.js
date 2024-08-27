@@ -24,6 +24,7 @@ async function getPosts( page = 1 ) {
 		// Tribe wraps the response in 'events' for some reason.
 		const response = await EleventyFetch( url, params );
 		if ( response.events ) {
+			console.log( response.events[0] );
 			return response.events;
 		}
 		return [];
