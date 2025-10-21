@@ -6,7 +6,7 @@ layout:    'base.njk'
 
 Welcome to Brandon Judokan.
 
-## 2024-2025 Schedule
+## 2025 &ndash; 2026 Schedule
 
 - Kids' class: Monday and Wednesday, 6pm – 7pm
 - Adult class: Monday and Wednesday, 7pm – 8:15pm
